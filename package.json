@@ -1,0 +1,22 @@
+{
+  "name": "ecogreen",
+  "private": true,
+  "packageManager": "pnpm@10.15.1",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "concurrently -n web,api -c auto \"pnpm --filter web dev\" \"pnpm --filter api dev\"",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "format": "pnpm -r format"
+  },
+  "dependencies": {
+    "framer-motion": "^12.23.12",
+    "lucide-react": "^0.542.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
