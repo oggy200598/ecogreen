@@ -1,96 +1,84 @@
-import Hero from "../components/Hero"
-import PriceCard from "../components/PriceCard"
-import ProductCard from "../components/ProductCard"
-import { Link } from "react-router-dom"
-import { motion } from "framer-motion"
-import ServicesStrip from "../components/ServicesStrip"
-import CategoryGrid from "../components/CategoryGrid"
-import WhyUs from "../components/WhyUs"
-import CTAQuote from "../components/CTAQuote"
-import NewsPreview from "../components/NewsPreview"
-import PartnersMarquee from "../components/PartnersMarquee"
-import FloatingButtons from "../components/FloatingButtons"
-
+// src/pages/Home.jsx
+import Hero from "../components/Hero";
+import IntroSplit from "../components/IntroSplit";
+import ServicesStrip from "../components/ServicesStrip";
+import PartnersMarquee from "../components/PartnersMarquee";
+import ProductTeaser from "../components/ProductTeaser"; // <-- dùng teaser giống ảnh mẫu
+import WhyUs from "../components/WhyUs";
+import NewsPreview from "../components/NewsPreview";
+import CTAQuote from "../components/CTAQuote";
+import FloatingButtons from "../components/FloatingButtons";
+import SubHero from "../components/SubHero";
 export default function Home() {
   return (
-    <div>
-      <Hero />
+    <div className="relative min-h-screen">
+      {/* Nền trang */}
+    <div className="absolute inset-0 bg-[url('/bg.jpg')] bg-cover bg-center"></div> 
+    <div className="absolute inset-0 bg-white/97"></div>
 
-      <ServicesStrip />
+      <div className="relative z-10">
+        {/* 1) Hero */}
+        <Hero />
 
-      <CategoryGrid />
+        {/* 2) Strip dịch vụ */}
+        <ServicesStrip />
 
-      <section className="py-12 px-6 text-center bg-white">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <h2 className="text-3xl font-bold mb-4 text-green-600">
-            Chào mừng đến EcoGreen 🌱
-          </h2>
-        </motion.div>
-        <p className="md:text-gray-200 max-w-2xl mx-auto text-white/90 hidden">
-          placeholder
-        </p>
-        <p className="text-gray-700 max-w-2xl mx-auto">
-          EcoGreen mang đến các sản phẩm bao bì thân thiện môi trường, làm từ
-          giấy tái chế.
-        </p>
-        <Link
-          to="/products"
-          className="inline-block mt-6 px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition"
-        >
-          Xem sản phẩm
-        </Link>
-      </section>
+        {/* 3) Intro 2 cột (giới thiệu ngắn + CTA) */}
+        <IntroSplit />
 
-      <WhyUs />
+        {/* 4) Dải logo đối tác */}
+        <PartnersMarquee />
 
-      <section className="py-12 px-6 bg-gray-50">
-        <h3 className="text-2xl font-bold text-center mb-8">
-          Sản phẩm nổi bật
-        </h3>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          <ProductCard
-            image="/products/cup.jpg"
-            title="Ly giấy Eco"
-            description="Ly giấy phân hủy sinh học."
-            price="50.000đ / 100 cái"
-          />
-          <ProductCard
-            image="/products/bag.jpg"
-            title="Túi giấy Kraft"
-            description="Túi giấy tái chế, bền đẹp."
-            price="30.000đ / 50 cái"
-          />
-          <ProductCard
-            image="/products/box.jpg"
-            title="Hộp giấy thực phẩm"
-            description="Tiện lợi, sạch sẽ, xanh."
-            price="70.000đ / 100 cái"
-          />
-        </div>
-      </section>
+        {/* 5) Khối sản phẩm kiểu “teaser” (giống screenshot bạn gửi) */}
+        <section className="py-12 px-6">
+          <div className="mx-auto max-w-6xl rounded-2xl border border-emerald-100 bg-white/90 backdrop-blur p-6 shadow-lg">
+            {/* Kicker + tiêu đề trái */}
+            <p className="text-[12px] font-semibold tracking-[0.18em] text-emerald-700 uppercase">
+              Những gì chúng tôi cung cấp
+            </p>
+            <h2 className="mt-2 mb-8 text-3xl md:text-[34px] leading-tight font-bold text-emerald-900">
+              Các sản phẩm và dịch vụ bền vững thúc đẩy doanh nghiệp của bạn phát triển
+            </h2>
 
-      <CTAQuote />
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              <ProductTeaser
+                to="/san-pham/bot-giay"
+                image="/products/bot-giay.jpg"
+                title="Bột giấy"
+                description="Bột giấy bền vững và các loại bột giấy đặc biệt được làm từ nguồn tài nguyên tái tạo."
+              />
+              <ProductTeaser
+                to="/san-pham/giay"
+                image="/products/giay.jpg"
+                title="Giấy"
+                description="Từ bìa cứng đến giấy kraft bão hòa, các loại giấy chuyên dụng phục vụ sản xuất công nghiệp."
+              />
+              <ProductTeaser
+                to="/san-pham/spacekraft"
+                image="/products/spacekraft.jpg"
+                title="SpaceKraft®"
+                description="Giải pháp đóng gói số lượng lớn, tiết kiệm chi phí và bền vững cho vận chuyển chất lỏng."
+              />
+            </div>
+          </div>
+        </section>
 
-      <NewsPreview />
+        {/* 6) Vì sao chọn EcoGreen */}
+        
+        <SubHero />
+        {/* 7) Tin tức */}
+        <section className="py-12 px-6">
+          <div className="mx-auto max-w-6xl rounded-2xl border border-emerald-100 bg-white/90 backdrop-blur p-6 shadow-lg">
+            <NewsPreview />
+          </div>
+        </section>
 
-      <PartnersMarquee />
-
-      <section className="py-12 px-6">
-        <h3 className="text-2xl font-bold text-center mb-8">Ưu đãi đặc biệt</h3>
-        <div className="max-w-3xl mx-auto">
-          <PriceCard
-            title="Combo quán cafe"
-            description="Ly + ống hút giấy + hộp giấy giá tốt."
-            price="399.000đ"
-          />
-        </div>
-      </section>
-
-      <FloatingButtons />
+        {/* 8) CTA cuối trang */}
+        <CTAQuote />
+        <WhyUs />
+        {/* 9) Nút nổi */}
+        <FloatingButtons />
+      </div>
     </div>
   );
 }

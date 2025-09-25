@@ -1,279 +1,169 @@
 import { useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { ChevronDown } from "lucide-react";
 
-export default function Navbar({ linkClass, rightSlot }) {
-  const [open, setOpen] = useState(false);
-  const [openSanPham, setOpenSanPham] = useState(false);
-  const [openThuVien, setOpenThuVien] = useState(false);
-  const [openTinTuc, setOpenTinTuc] = useState(false);
+export default function Navbar({ isMobile, closeMenu }) {
+  const items = [
+    { to: "/", label: "Trang chủ", end: true },
+    { to: "/about", label: "Giới thiệu" },
+    {
+      to: "/products",
+      label: "Sản phẩm",
+      children: [
+        { to: "/products/type-a", label: "Loại A" },
+        { to: "/products/type-b", label: "Loại B" },
+      ],
+    },
+    { to: "/tu-van-thiet-ke", label: "Tư vấn thiết kế" },
+    {
+      to: "/thu-vien",
+      label: "Thư viện",
+      children: [
+        { to: "/thu-vien/hinh-anh", label: "Hình ảnh" },
+        { to: "/thu-vien/video", label: "Video" },
+      ],
+    },
+    { to: "/tuyen-dung", label: "Tuyển dụng" },
+    {
+      to: "/tin-tuc",
+      label: "Tin tức",
+      children: [
+        { to: "/tin-tuc/1", label: "Bài viết 1" },
+        { to: "/tin-tuc/2", label: "Bài viết 2" },
+      ],
+    },
+    { to: "/contact", label: "Liên hệ" },
+  ];
 
-  const closeMenu = () => {
-    setOpen(false);
-    setOpenSanPham(false);
-    setOpenThuVien(false);
-    setOpenTinTuc(false);
-  };
+  return isMobile
+    ? <MobileMenu items={items} closeMenu={closeMenu} />
+    : <DesktopMenu items={items} closeMenu={closeMenu} />;
+}
 
-  const base = "px-3 py-2 text-white/90 hover:text-white";
-  const item = (isActive) =>
-    `${linkClass ?? base} ${isActive ? "text-white font-semibold" : ""}`;
+/* ---------- Desktop ---------- */
+function DesktopMenu({ items, closeMenu }) {
+  const base =
+    "whitespace-nowrap inline-flex items-center gap-1 rounded-md " +
+    "px-3 md:px-2.5 lg:px-3 xl:px-4 py-2 " +
+    "text-sm md:text-[14px] lg:text-[15px] transition-colors";
+
+  const itemClass = ({ isActive }) =>
+    isActive
+       ? base + " text-emerald-400 font-semibold"
+       : base + " text-white/90 hover:text-white hover:bg-white/10";
 
   return (
-    <div className="relative z-[200] isolate bg-green-600 text-white backdrop-blur supports-[backdrop-filter]:bg-green-600/90">
-      <div className="container mx-auto flex items-center justify-between px-4 py-3">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
-          <img src="/logo.png" alt="logo" className="h-10" />
-          <span className="text-lg font-bold">EcoGreen</span>
-        </Link>
-
-        {/* Menu desktop */}
-        <ul className="hidden md:flex items-center gap-2">
-          <li>
-            <NavLink to="/" end className={({ isActive }) => item(isActive)}>
-              Trang chủ
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/gioi-thieu"
-              className={({ isActive }) => item(isActive)}
-            >
-              Giới thiệu
-            </NavLink>
-          </li>
-
-          {/* Sản phẩm */}
-          <li className="relative group">
-            <NavLink to="/san-pham" className={({ isActive }) => item(isActive)}>
-              Sản phẩm ▾
-            </NavLink>
-            <div className="absolute left-0 top-full hidden group-hover:block bg-green-700 text-white shadow-md min-w-48 z-50">
-              <NavLink
-                to="/san-pham/loai-a"
-                className="block px-4 py-2 text-sm hover:bg-green-500"
-                onClick={closeMenu}
-              >
-                Loại A
-              </NavLink>
-              <NavLink
-                to="/san-pham/loai-b"
-                className="block px-4 py-2 text-sm hover:bg-green-500"
-                onClick={closeMenu}
-              >
-                Loại B
-              </NavLink>
-            </div>
-          </li>
-
-          <li>
-            <NavLink
-              to="/tu-van-thiet-ke"
-              className={({ isActive }) => item(isActive)}
-            >
-              Tư vấn thiết kế
-            </NavLink>
-          </li>
-
-          {/* Thư viện */}
-          <li className="relative group">
-            <NavLink to="/thu-vien" className={({ isActive }) => item(isActive)}>
-              Thư viện ▾
-            </NavLink>
-            <div className="absolute left-0 top-full hidden group-hover:block bg-green-700 text-white shadow-md min-w-48 z-50">
-              <NavLink
-                to="/thu-vien/hinh-anh"
-                className="block px-4 py-2 text-sm hover:bg-green-500"
-                onClick={closeMenu}
-              >
-                Hình ảnh
-              </NavLink>
-              <NavLink
-                to="/thu-vien/video"
-                className="block px-4 py-2 text-sm hover:bg-green-500"
-                onClick={closeMenu}
-              >
-                Video
-              </NavLink>
-            </div>
-          </li>
-
-          <li>
-            <NavLink
-              to="/tuyen-dung"
-              className={({ isActive }) => item(isActive)}
-            >
-              Tuyển dụng
-            </NavLink>
-          </li>
-
-          {/* Tin tức */}
-          <li className="relative group">
-            <NavLink to="/tin-tuc" className={({ isActive }) => item(isActive)}>
-              Tin tức ▾
-            </NavLink>
-            <div className="absolute left-0 top-full hidden group-hover:block bg-green-700 text-white shadow-md min-w-56 z-50">
-              <NavLink
-                to="/tin-tuc/1"
-                className="block px-4 py-2 text-sm hover:bg-green-500"
-                onClick={closeMenu}
-              >
-                Bài viết 1
-              </NavLink>
-              <NavLink
-                to="/tin-tuc/2"
-                className="block px-4 py-2 text-sm hover:bg-green-500"
-                onClick={closeMenu}
-              >
-                Bài viết 2
-              </NavLink>
-            </div>
-          </li>
-
-          <li>
-            <NavLink
-              to="/lien-he"
-              className={({ isActive }) => item(isActive)}
-            >
-              Liên hệ
-            </NavLink>
-          </li>
-        </ul>
-
-        {/* Burger mobile */}
-        <button
-          className="md:hidden text-white text-2xl"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Toggle menu"
-        >
-          ☰
-        </button>
-
-        {rightSlot}
-      </div>
-
-      {/* Menu mobile */}
-      {open && (
-        <div className="absolute top-full left-0 w-full bg-green-700 text-white flex flex-col md:hidden">
-          <NavLink
-            to="/"
-            end
-            onClick={closeMenu}
-            className="px-4 py-3 hover:bg-green-500"
-          >
-            Trang chủ
-          </NavLink>
-          <NavLink
-            to="/gioi-thieu"
-            onClick={closeMenu}
-            className="px-4 py-3 hover:bg-green-500"
-          >
-            Giới thiệu
+    <ul className="flex items-center gap-2 lg:gap-3 xl:gap-4 text-white">
+      {items.map((it) => (
+        <li key={it.to} className="relative group">
+          <NavLink to={it.to} end={it.end} onClick={closeMenu} className={itemClass}>
+            <span>{it.label}</span>
+            {it.children && (
+              <ChevronDown
+                size={16}
+                className="opacity-80 transition-transform duration-200 group-hover:rotate-180"
+              />
+            )}
           </NavLink>
 
-          {/* Sản phẩm mobile */}
-          <button
-            onClick={() => setOpenSanPham((v) => !v)}
-            className="px-4 py-3 text-left hover:bg-green-500 flex justify-between"
-          >
-            Sản phẩm <span>{openSanPham ? "▲" : "▼"}</span>
-          </button>
-          {openSanPham && (
-            <div className="flex flex-col bg-green-800">
-              <NavLink
-                to="/san-pham/loai-a"
-                onClick={closeMenu}
-                className="px-6 py-2 hover:bg-green-500"
+          {/* Dropdown desktop — dùng wrapper pt-2 làm "cầu nối", không dùng mt-2 */}
+          {it.children && (
+            <div
+              className="
+                absolute left-0 top-full w-max pt-2
+                opacity-0 invisible translate-y-1
+                group-hover:opacity-100 group-hover:visible group-hover:translate-y-0
+                group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0
+                transition-all duration-150 z-[500]
+                pointer-events-none
+              "
+            >
+              <div
+                className="
+                  pointer-events-auto rounded-xl bg-white/95 text-emerald-900 backdrop-blur
+                  ring-1 ring-emerald-900/10 shadow-xl min-w-48 overflow-hidden
+                "
+                role="menu"
               >
-                • Loại A
-              </NavLink>
-              <NavLink
-                to="/san-pham/loai-b"
-                onClick={closeMenu}
-                className="px-6 py-2 hover:bg-green-500"
-              >
-                • Loại B
-              </NavLink>
+                {it.children.map((sub) => (
+                  <NavLink
+                    key={sub.to}
+                    to={sub.to}
+                    onClick={closeMenu}
+                    className="block px-4 py-2 text-sm hover:bg-emerald-50 whitespace-nowrap"
+                  >
+                    {sub.label}
+                  </NavLink>
+                ))}
+              </div>
             </div>
           )}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
-          <NavLink
-            to="/tu-van-thiet-ke"
-            onClick={closeMenu}
-            className="px-4 py-3 hover:bg-green-500"
-          >
-            Tư vấn thiết kế
-          </NavLink>
+/* ---------- Mobile (Accordion) ---------- */
+function MobileMenu({ items, closeMenu }) {
+  const [open, setOpen] = useState(null);
 
-          {/* Thư viện mobile */}
-          <button
-            onClick={() => setOpenThuVien((v) => !v)}
-            className="px-4 py-3 text-left hover:bg-green-500 flex justify-between"
-          >
-            Thư viện <span>{openThuVien ? "▲" : "▼"}</span>
-          </button>
-          {openThuVien && (
-            <div className="flex flex-col bg-green-800">
+  return (
+    <ul className="text-white bg-emerald-700">
+      {items.map((it, idx) => {
+        const isOpen = open === idx;
+
+        if (!it.children) {
+          return (
+            <li key={it.to} className="border-b border-white/10">
               <NavLink
-                to="/thu-vien/hinh-anh"
+                to={it.to}
+                end={it.end}
                 onClick={closeMenu}
-                className="px-6 py-2 hover:bg-green-500"
+                className="block px-4 py-3 hover:bg-emerald-600/40"
               >
-                • Hình ảnh
+                {it.label}
               </NavLink>
-              <NavLink
-                to="/thu-vien/video"
-                onClick={closeMenu}
-                className="px-6 py-2 hover:bg-green-500"
-              >
-                • Video
-              </NavLink>
+            </li>
+          );
+        }
+
+        return (
+          <li key={it.to} className="border-b border-white/10">
+            <button
+              onClick={() => setOpen(isOpen ? null : idx)}
+              className="w-full flex items-center justify-between px-4 py-3 text-left hover:bg-emerald-600/40"
+              aria-expanded={isOpen}
+            >
+              <span className="font-medium">{it.label}</span>
+              <ChevronDown
+                size={18}
+                className={"transition-transform " + (isOpen ? "rotate-180" : "")}
+              />
+            </button>
+
+            <div
+              className={
+                "overflow-hidden transition-[max-height] duration-200 " +
+                (isOpen ? "max-h-40" : "max-h-0")
+              }
+            >
+              <div className="pl-6">
+                {it.children.map((sub) => (
+                  <NavLink
+                    key={sub.to}
+                    to={sub.to}
+                    onClick={closeMenu}
+                    className="block py-2 pr-4 hover:bg-emerald-600/40"
+                  >
+                    {sub.label}
+                  </NavLink>
+                ))}
+              </div>
             </div>
-          )}
-
-          <NavLink
-            to="/tuyen-dung"
-            onClick={closeMenu}
-            className="px-4 py-3 hover:bg-green-500"
-          >
-            Tuyển dụng
-          </NavLink>
-
-          {/* Tin tức mobile */}
-          <button
-            onClick={() => setOpenTinTuc((v) => !v)}
-            className="px-4 py-3 text-left hover:bg-green-500 flex justify-between"
-          >
-            Tin tức <span>{openTinTuc ? "▲" : "▼"}</span>
-          </button>
-          {openTinTuc && (
-            <div className="flex flex-col bg-green-800">
-              <NavLink
-                to="/tin-tuc/1"
-                onClick={closeMenu}
-                className="px-6 py-2 hover:bg-green-500"
-              >
-                • Bài viết 1
-              </NavLink>
-              <NavLink
-                to="/tin-tuc/2"
-                onClick={closeMenu}
-                className="px-6 py-2 hover:bg-green-500"
-              >
-                • Bài viết 2
-              </NavLink>
-            </div>
-          )}
-
-          <NavLink
-            to="/lien-he"
-            onClick={closeMenu}
-            className="px-4 py-3 hover:bg-green-500"
-          >
-            Liên hệ
-          </NavLink>
-        </div>
-      )}
-    </div>
+          </li>
+        );
+      })}
+    </ul>
   );
 }

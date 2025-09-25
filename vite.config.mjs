@@ -5,5 +5,4 @@ import tailwind from '@tailwindcss/vite';
 export default defineConfig({
   plugins: [react(), tailwind()],
   server:{ port:8080},
-  base: process.env.VITE_BASE_PATH || "/ecogreen",
 });

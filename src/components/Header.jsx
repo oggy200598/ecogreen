@@ -1,6 +1,7 @@
+// src/components/Header.jsx
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
 import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,72 +13,83 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // class link: trắng mặc định → vàng khi active/hover
-  const linkClass = ({ isActive }) =>
-    "relative px-3 py-2 text-[13px] font-medium tracking-wide transition-colors " +
-    (isActive
-      ? "text-yellow-300"
-      : "text-white hover:text-yellow-300") +
-    " after:absolute after:left-3 after:-bottom-1 after:h-0.5 after:w-[calc(100%-1.5rem)] after:origin-left after:scale-x-0 after:bg-yellow-300 after:transition-transform " +
-    (isActive ? "after:scale-x-100" : "hover:after:scale-x-100");
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? "hidden" : "";
+    return () => (document.body.style.overflow = "");
+  }, [isOpen]);
 
-  const closeMenu = () => setIsOpen(false);
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth >= 1024) setIsOpen(false);
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   return (
     <header
       className={
-        "sticky top-0 z-[200] transition-all " +
+        "sticky top-0 z-[300] transition-all " +
         (scrolled ? "shadow-lg shadow-black/10" : "")
       }
     >
-      {/* Thanh navbar nền kính mờ */}
-      <div className="backdrop-blur supports-[backdrop-filter]:bg-emerald-600/90 bg-emerald-600 border-b border-white/10">
-        <Navbar
-          linkClass={linkClass}
-          closeMenu={closeMenu}
-          rightSlot={
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-              className="md:hidden inline-grid place-items-center h-9 w-9 rounded-md text-white hover:bg-white/10 transition"
-            >
-              ☰
-            </button>
-          }
-        />
+      <div
+        className="
+          text-white relative
+          bg-gradient-to-r from-emerald-600 to-green-600
+          supports-[backdrop-filter]:backdrop-blur
+          supports-[backdrop-filter]:from-emerald-600/85 supports-[backdrop-filter]:to-green-600/85
+        "
+      >
+        <div className="container mx-auto flex items-center justify-between px-4 h-16 lg:h-20">
+          <Link to="/" className="flex items-center gap-2">
+            <img src="/logo.png" alt="EcoGreen" className="h-9 lg:h-12 w-auto" />
+          </Link>
+
+          <nav className="hidden lg:block">
+            <Navbar isMobile={false} closeMenu={() => setIsOpen(false)} />
+          </nav>
+
+          <button
+            className="lg:hidden inline-grid place-items-center h-11 w-11 rounded-md text-2xl hover:bg-white/10 transition"
+            onClick={() => setIsOpen(v => !v)}
+            aria-label="Mở/đóng menu"
+            aria-expanded={isOpen}
+            aria-controls="mobile-menu"
+          >
+            ☰
+          </button>
+        </div>
       </div>
 
-      {/* Menu mobile */}
+      {/* Overlay */}
       {isOpen && (
-        <ul className="md:hidden bg-emerald-700/95 text-white flex flex-col gap-1 px-3 py-3 shadow-lg animate-[fadeIn_.15s_ease]">
-          {[
-            { to: "/", label: "Trang chủ", end: true },
-            { to: "/gioi-thieu", label: "Giới thiệu" },
-            { to: "/san-pham", label: "Sản phẩm" },
-            { to: "/tu-van-thiet-ke", label: "Tư vấn thiết kế" },
-            { to: "/thu-vien", label: "Thư viện" },
-            { to: "/tuyen-dung", label: "Tuyển dụng" },
-            { to: "/tin-tuc", label: "Tin tức" },
-            { to: "/lien-he", label: "Liên hệ" },
-          ].map((it) => (
-            <li key={it.to}>
-              <NavLink
-                to={it.to}
-                end={it.end}
-                className={({ isActive }) =>
-                  "block rounded-md px-3 py-2 text-[14px] transition-colors " +
-                  (isActive
-                    ? "text-yellow-300"
-                    : "text-white hover:text-yellow-300")
-                }
-                onClick={closeMenu}
-              >
-                {it.label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <div
+          className="fixed inset-0 z-[280] bg-black/40 lg:hidden"
+          onClick={() => setIsOpen(false)}
+        />
       )}
+
+      {/* Menu mobile: cao theo nội dung, giới hạn đến gần đáy */}
+      <div
+        id="mobile-menu"
+        className={
+          "lg:hidden fixed inset-x-0 top-16 z-[320] " + // ❗ không còn bottom-0
+          (isOpen ? "block" : "hidden")
+        }
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          className="
+            max-h-[calc(100vh-4rem)] overflow-y-auto
+            bg-emerald-700 text-white shadow-2xl rounded-b-xl
+            pb-[env(safe-area-inset-bottom)]   /* hỗ trợ máy có tai thỏ */
+          "
+        >
+          <Navbar isMobile={true} closeMenu={() => setIsOpen(false)} />
+        </div>
+      </div>
     </header>
   );
 }
