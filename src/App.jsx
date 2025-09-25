@@ -23,15 +23,9 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/products" element={<Products />} />
           <Route path="/contact" element={<Contact />} />
-
-          {/* Route mới cho Tin tức */}
           <Route path="/tin-tuc" element={<NewsList />} />
           <Route path="/tin-tuc/:slug" element={<NewsDetail />} />
-
-          {/* API Check */}
           <Route path="/api-check" element={<ApiCheck />} />
-
-          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
