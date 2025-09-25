@@ -9,8 +9,8 @@ import Products from "./pages/Products";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import ApiCheck from "./pages/ApiCheck";
-import NewsList from "./pages/NewsList";       // danh sách tin
-import NewsDetail from "./pages/NewsDetail";  // chi tiết tin
+import NewsList from "./pages/NewsList";
+import NewsDetail from "./pages/NewsDetail";
 
 export default function App() {
   return (
