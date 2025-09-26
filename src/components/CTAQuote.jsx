@@ -5,7 +5,7 @@ export default function CTAQuote() {
     <section
       className="
         py-16 relative
-        bg-gradient-to-r from-emerald-600 to-green-600
+        bg-gradient-to-r from-emerald-500 to-green-600
         text-white text-center
       "
     >

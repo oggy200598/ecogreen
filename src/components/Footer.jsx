@@ -2,7 +2,7 @@ import { Facebook, Instagram, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-emerald-700 to-green-700 text-white pt-12 pb-6">
+    <footer className="bg-gradient-to-r from-emerald-500 to-green-500 text-white pt-12 pb-6">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
         
         {/* Cột 1: Thông tin */}
@@ -38,7 +38,7 @@ export default function Footer() {
             </a>
             <a href="https://zalo.me" target="_blank" rel="noreferrer"
               className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition">
-              <img src="/zalo.png" alt="Zalo" className="h-5 w-5" />
+              <Instagram size={18} />
             </a>
             <a href="https://instagram.com" target="_blank" rel="noreferrer"
               className="p-2 bg-white/10 rounded-full hover:bg-white/20 transition">
