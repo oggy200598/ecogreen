@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Cấm bot index trang test hoặc API
+Disallow: /api/
+Disallow: /test/
+
+# Khai báo sitemap (nếu bạn có)
+Sitemap: https://ecogreen.com/sitemap.xml

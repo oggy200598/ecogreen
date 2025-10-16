@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 import { SpeedInsights } from '@vercel/speed-insights/react' // ✅ import bản React
-
+import { Analytics } from "@vercel/analytics/next"
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <App />
-    <SpeedInsights /> 
+    <SpeedInsights />
+    <Analytics />
   </React.StrictMode>,
 )

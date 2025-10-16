@@ -1,37 +1,37 @@
 // src/App.jsx
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Suspense, lazy } from "react";
 import ScrollToTop from "./components/ScrollToTop";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-// Pages cấp 1
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+// Loader nhỏ khi chờ tải chunk
+function Loader() {
+  return <div style={{padding:"40px 0", textAlign:"center"}}>Loading…</div>;
+}
 
-// Sản phẩm
-import Products from "./pages/Products";          // trang danh mục /products
-import TypeA from "./pages/products/TypeA";       // /products/type-a
-import TypeB from "./pages/products/TypeB";       // /products/type-b
+// ===== Lazy pages =====
+const Home         = lazy(()=>import("./pages/Home"));
+const About        = lazy(()=>import("./pages/About"));
+const Contact      = lazy(()=>import("./pages/Contact"));
+const NotFound     = lazy(()=>import("./pages/NotFound"));
 
-// Tư vấn thiết kế
-import TuVanThietKe from "./pages/TuVanThietKe";  // /tu-van-thiet-ke
+const Products     = lazy(()=>import("./pages/Products"));
+const TypeA        = lazy(()=>import("./pages/products/TypeA"));
+const TypeB        = lazy(()=>import("./pages/products/TypeB"));
 
-// Thư viện
-import ThuVien from "./pages/ThuVien";            // wrapper có <Outlet/>
-import HinhAnh from "./pages/thu-vien/HinhAnh";   // /thu-vien/hinh-anh
-import Video from "./pages/thu-vien/Video";       // /thu-vien/video
+const TuVanThietKe = lazy(()=>import("./pages/TuVanThietKe"));
 
-// Tuyển dụng
-import TuyenDung from "./pages/TuyenDung";        // /tuyen-dung
+const ThuVien      = lazy(()=>import("./pages/ThuVien"));
+const HinhAnh      = lazy(()=>import("./pages/thu-vien/HinhAnh"));
+const Video        = lazy(()=>import("./pages/thu-vien/Video"));
 
-// Tin tức
-import NewsList from "./pages/NewsList";          // /tin-tuc
-import NewsDetail from "./pages/NewsDetail";      // /tin-tuc/:slug
+const TuyenDung    = lazy(()=>import("./pages/TuyenDung"));
 
-// Khác (nếu cần)
-import ApiCheck from "./pages/ApiCheck";
+const NewsList     = lazy(()=>import("./pages/NewsList"));
+const NewsDetail   = lazy(()=>import("./pages/NewsDetail"));
+
+const ApiCheck     = lazy(()=>import("./pages/ApiCheck"));
 
 export default function App() {
   return (
@@ -40,44 +40,46 @@ export default function App() {
       <Header />
 
       <main className="pt-0">
-        <Routes>
-          {/* Home */}
-          <Route path="/" element={<Home />} />
+        <Suspense fallback={<Loader />}>
+          <Routes>
+            {/* Home */}
+            <Route path="/" element={<Home />} />
 
-          {/* About */}
-          <Route path="/about" element={<About />} />
+            {/* About */}
+            <Route path="/about" element={<About />} />
 
-          {/* Products + nested */}
-          <Route path="/products" element={<Products />}>
-            <Route path="type-a" element={<TypeA />} />
-            <Route path="type-b" element={<TypeB />} />
-          </Route>
+            {/* Products + nested */}
+            <Route path="/products" element={<Products />}>
+              <Route path="type-a" element={<TypeA />} />
+              <Route path="type-b" element={<TypeB />} />
+            </Route>
 
-          {/* Tư vấn thiết kế */}
-          <Route path="/tu-van-thiet-ke" element={<TuVanThietKe />} />
+            {/* Tư vấn thiết kế */}
+            <Route path="/tu-van-thiet-ke" element={<TuVanThietKe />} />
 
-          {/* Thư viện + nested */}
-          <Route path="/thu-vien" element={<ThuVien />}>
-            <Route path="hinh-anh" element={<HinhAnh />} />
-            <Route path="video" element={<Video />} />
-          </Route>
+            {/* Thư viện + nested */}
+            <Route path="/thu-vien" element={<ThuVien />}>
+              <Route path="hinh-anh" element={<HinhAnh />} />
+              <Route path="video" element={<Video />} />
+            </Route>
 
-          {/* Tuyển dụng */}
-          <Route path="/tuyen-dung" element={<TuyenDung />} />
+            {/* Tuyển dụng */}
+            <Route path="/tuyen-dung" element={<TuyenDung />} />
 
-          {/* Tin tức */}
-          <Route path="/tin-tuc" element={<NewsList />} />
-          <Route path="/tin-tuc/:slug" element={<NewsDetail />} />
+            {/* Tin tức */}
+            <Route path="/tin-tuc" element={<NewsList />} />
+            <Route path="/tin-tuc/:slug" element={<NewsDetail />} />
 
-          {/* Contact */}
-          <Route path="/contact" element={<Contact />} />
+            {/* Contact */}
+            <Route path="/contact" element={<Contact />} />
 
-          {/* Khác */}
-          <Route path="/api-check" element={<ApiCheck />} />
+            {/* Khác */}
+            <Route path="/api-check" element={<ApiCheck />} />
 
-          {/* 404 */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+            {/* 404 */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
 
       <Footer />
