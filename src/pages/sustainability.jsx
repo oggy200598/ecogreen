@@ -15,7 +15,7 @@ export default function Sustainability() {
           transition={{ duration: 0.6 }}
           className="text-4xl md:text-5xl font-extrabold text-green-700 mb-6"
         >
-        
+          
         </motion.h2>
 
         {/* Đoạn giới thiệu */}

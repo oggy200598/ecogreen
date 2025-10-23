@@ -47,7 +47,7 @@ export default function Navbar() {
           <li><NavLink to="/tin-tuc" className={navItemClass} onClick={closeMenu}>Tin tức</NavLink></li>
           <li><NavLink to="/lien-he" className={navItemClass} onClick={closeMenu}>Liên hệ</NavLink></li>
         </ul>
-      </div>
+      </div>  
     </nav>
   )
 }
