@@ -2,7 +2,7 @@ import { Facebook, Instagram, Phone, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-emerald-500 to-green-500 text-white pt-12 pb-6">
+    <footer className="bg-gradient-to-r from-emerald-600 to-green-600 text-white pt-12 pb-6">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
         
         {/* Cột 1: Thông tin */}

@@ -1,88 +1,44 @@
-// src/App.jsx
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
-import Header from "./components/Header";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
-// Loader nhỏ khi chờ tải chunk
-function Loader() {
-  return <div style={{padding:"40px 0", textAlign:"center"}}>Loading…</div>;
-}
-
-// ===== Lazy pages =====
-const Home         = lazy(()=>import("./pages/Home"));
-const About        = lazy(()=>import("./pages/About"));
-const Contact      = lazy(()=>import("./pages/Contact"));
-const NotFound     = lazy(()=>import("./pages/NotFound"));
-
-const Products     = lazy(()=>import("./pages/Products"));
-const TypeA        = lazy(()=>import("./pages/products/TypeA"));
-const TypeB        = lazy(()=>import("./pages/products/TypeB"));
-
-const TuVanThietKe = lazy(()=>import("./pages/TuVanThietKe"));
-
-const ThuVien      = lazy(()=>import("./pages/ThuVien"));
-const HinhAnh      = lazy(()=>import("./pages/thu-vien/HinhAnh"));
-const Video        = lazy(()=>import("./pages/thu-vien/Video"));
-
-const TuyenDung    = lazy(()=>import("./pages/TuyenDung"));
-
-const NewsList     = lazy(()=>import("./pages/NewsList"));
-const NewsDetail   = lazy(()=>import("./pages/NewsDetail"));
-
-const ApiCheck     = lazy(()=>import("./pages/ApiCheck"));
+import Home from "./pages/Home";
+import GioiThieu from "./pages/GioiThieu";
+import Products from "./pages/Products";
+import TuVanThietKe from "./pages/TuVanThietKe";
+import ThuVien from "./pages/ThuVien";
+import HinhAnh from "./pages/thu-vien/HinhAnh";
+import Video from "./pages/thu-vien/Video";
+import TuyenDung from "./pages/TuyenDung";
+import NewsList from "./pages/NewsList";
+import NewsDetail from "./pages/NewsDetail";
+import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
+import SEO from "./components/SEO";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <ScrollToTop />
-      <Header />
+      <SEO />
+      <Navbar />
 
-      <main className="pt-0">
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            {/* Home */}
-            <Route path="/" element={<Home />} />
-
-            {/* About */}
-            <Route path="/about" element={<About />} />
-
-            {/* Products + nested */}
-            <Route path="/products" element={<Products />}>
-              <Route path="type-a" element={<TypeA />} />
-              <Route path="type-b" element={<TypeB />} />
-            </Route>
-
-            {/* Tư vấn thiết kế */}
-            <Route path="/tu-van-thiet-ke" element={<TuVanThietKe />} />
-
-            {/* Thư viện + nested */}
-            <Route path="/thu-vien" element={<ThuVien />}>
-              <Route path="hinh-anh" element={<HinhAnh />} />
-              <Route path="video" element={<Video />} />
-            </Route>
-
-            {/* Tuyển dụng */}
-            <Route path="/tuyen-dung" element={<TuyenDung />} />
-
-            {/* Tin tức */}
-            <Route path="/tin-tuc" element={<NewsList />} />
-            <Route path="/tin-tuc/:slug" element={<NewsDetail />} />
-
-            {/* Contact */}
-            <Route path="/contact" element={<Contact />} />
-
-            {/* Khác */}
-            <Route path="/api-check" element={<ApiCheck />} />
-
-            {/* 404 */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/gioi-thieu" element={<GioiThieu />} />
+        <Route path="/san-pham" element={<Products />} />
+        <Route path="/tu-van-thiet-ke" element={<TuVanThietKe />} />
+        <Route path="/thu-vien" element={<ThuVien />} />
+        <Route path="/thu-vien/hinh-anh" element={<HinhAnh />} />
+        <Route path="/thu-vien/video" element={<Video />} />
+        <Route path="/tuyen-dung" element={<TuyenDung />} />
+        <Route path="/tin-tuc" element={<NewsList />} />
+        <Route path="/tin-tuc/:id" element={<NewsDetail />} />
+        <Route path="/lien-he" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
 
       <Footer />
-    </BrowserRouter>
+    </Router>
   );
-}
+ }

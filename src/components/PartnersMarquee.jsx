@@ -5,6 +5,11 @@ export default function PartnersMarquee() {
     "/partners/p3.png",
     "/partners/p4.png",
     "/partners/p5.png",
+    "/partners/p6.png",
+    "/partners/p7.png",
+    "/partners/p8.png",
+    "/partners/p9.png",
+    "/partners/p10.png",
   ];
 
   return (
@@ -24,7 +29,7 @@ export default function PartnersMarquee() {
       {/* Marquee */}
       <div className="w-full overflow-hidden">
         <div className="flex justify-center items-center gap-20 whitespace-nowrap animate-[scroll_25s_linear_infinite] h-24">
-          {logos.concat(logos).map((src, i) => (
+          {logos.map((src, i) => (
             <img
               key={i}
               src={src}

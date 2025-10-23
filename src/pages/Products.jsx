@@ -3,28 +3,18 @@ import ProductCard from "../components/ProductCard";
 import productsData from "../data/products";
 import { Filter } from "lucide-react";
 
-export default function Products() {
-  const demo = [
-    {
-      title: "Ly giấy Eco",
-      description: "Phân hủy sinh học.",
-      price: "50.000đ / 100 cái",
-      image: "/products/cup.jpg",
-    },
-    {
-      title: "Túi giấy Kraft",
-      description: "Tái chế, bền đẹp.",
-      price: "30.000đ / 50 cái",
-      image: "/products/bag.jpg",
-    },
-    {
-      title: "Hộp giấy đựng thức ăn",
-      description: "Tiện lợi, sạch sẽ.",
-      price: "70.000đ / 100 cái",
-      image: "/products/box.jpg",
-    },
-  ];
+// If 'demo' is used as a fallback, define it or import it here
+const demo = [
+  // Example demo data
+  {
+    title: "Demo Product",
+    description: "Sản phẩm demo",
+    price: "0",
+    image: "/products/box.jpg",
+  },
+];
 
+function Products() {
   const base =
     Array.isArray(productsData) && productsData.length ? productsData : demo;
 
@@ -90,3 +80,5 @@ export default function Products() {
     </div>
   );
 }
+
+export default Products;
