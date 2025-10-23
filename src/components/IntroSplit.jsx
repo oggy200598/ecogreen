@@ -28,12 +28,12 @@ export default function IntroSplit(){
               chi phí tối ưu và dịch vụ tận tâm.
             </p>
             <div className="mt-5 flex items-center gap-4">
-              <a href="/about"
+              <a href="/gioi-thieu"
                  className="px-5 py-2.5 rounded-md font-semibold text-white
                             bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 transition">
                 Đọc thêm
               </a>
-              <a href="/contact"
+              <a href="/lien-he"
                  className="px-5 py-2.5 rounded-md font-semibold border border-emerald-600 text-emerald-700 hover:bg-emerald-50 transition">
                 Liên hệ
               </a>

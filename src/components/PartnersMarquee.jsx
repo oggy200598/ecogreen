@@ -8,8 +8,7 @@ export default function PartnersMarquee() {
     "/partners/p6.png",
     "/partners/p7.png",
     "/partners/p8.png",
-    "/partners/p9.png",
-    "/partners/p10.png",
+
   ];
 
   return (
