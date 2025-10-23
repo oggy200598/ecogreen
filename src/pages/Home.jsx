@@ -9,7 +9,7 @@ import NewsPreview from "../components/NewsPreview";
 import CTAQuote from "../components/CTAQuote";
 import FloatingButtons from "../components/FloatingButtons";
 import SubHero from "../components/SubHero";
-
+<meta name="google-site-verification" content="kUKK7-1DNJM9QDwQz8-xGhhfOQDOc6M_JZnt4fmTU_c" />
 export default function Home() {
   return (
     <div className="relative min-h-screen">
