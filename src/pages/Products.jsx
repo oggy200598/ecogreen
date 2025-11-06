@@ -63,7 +63,7 @@ function Products() {
       </div>
 
       {/* CTA */}
-      <section className="text-center mt-16 bg-gradient-to-r from-emerald-500 to-green-600 py-12 px-6 rounded-xl text-white shadow-lg">
+      <section className="text-center mt-16 from-emerald-500 to-green-600 py-12 px-6 rounded-xl text-white shadow-lg">
         <h2 className="text-2xl font-bold mb-4">
           Bạn cần giải pháp bao bì riêng cho thương hiệu?
         </h2>

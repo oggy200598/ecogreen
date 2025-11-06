@@ -3,7 +3,7 @@ import { Leaf, Factory, Globe2 } from "lucide-react";
 
 export default function Sustainability() {
   return (
-    <section className="relative w-full bg-gradient-to-b from-green-50 via-emerald-50 to-green-100 py-20 px-6 overflow-hidden">
+    <section className="relative w-full from-green-50 via-emerald-50 to-green-100 py-20 px-6 overflow-hidden">
       {/* Hiệu ứng nền lá */}
       <div className="absolute inset-0 opacity-10 bg-[url('/patterns/leaves.svg')] bg-repeat bg-center"></div>
 
