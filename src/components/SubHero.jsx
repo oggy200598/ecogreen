@@ -17,12 +17,12 @@ export default function SubHero({
         className="absolute inset-0 h-full w-full object-cover"
       />
       {/* Overlay gradient tối nhẹ */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-linear-to-t from-black/50 via-black/20 to-transparent" />
 
       {/* Thanh màu ở đáy */}
       <div className="absolute bottom-0 left-0 right-0">
         <div className="mx-auto max-w-6xl px-6 md:px-8">
-          <div className="bg-gradient-to-r from-emerald-600 to-green-600 rounded-tr-[96px] rounded-tl-2xl p-6 md:p-10 shadow-2xl">
+          <div className="bg-linear-to-r from-emerald-600 to-green-600 rounded-tr-[96px] rounded-tl-2xl p-6 md:p-10 shadow-2xl">
             <p className="text-white/80 text-xs md:text-sm font-semibold tracking-widest">
               {kicker}
             </p>

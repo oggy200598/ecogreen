@@ -7,7 +7,7 @@ export default function ServicesStrip() {
   ];
 
   return (
-    <section className="text-white bg-gradient-to-r from-emerald-600 to-green-600">
+    <section className="text-white bg-linear-to-r from-emerald-600 to-green-600">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 px-4 py-4">
         {items.map((it, i) => (
           <div key={i} className="flex items-center gap-3">

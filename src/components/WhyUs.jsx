@@ -10,7 +10,7 @@ export default function WhyUs() {
   ];
 
   return (
-    <section className="py-20 px-6 bg-gradient-to-b from-white to-emerald-50">
+    <section className="py-20 px-6 bg-linear-to-b from-white to-emerald-50">
       <div className="mx-auto max-w-7xl rounded-3xl border border-emerald-100 bg-white/90 backdrop-blur shadow-xl">
         <h3 className="pt-12 text-center text-3xl font-extrabold text-emerald-800 tracking-tight">
           Vì sao chọn EcoGreen 🌱
@@ -37,7 +37,7 @@ export default function WhyUs() {
 
         {/* đường viền gradient */}
         <div className="px-12 pb-12">
-          <div className="h-px w-full bg-gradient-to-r from-transparent via-emerald-300 to-transparent" />
+          <div className="h-px w-full bg-linear-to-r from-transparent via-emerald-300 to-transparent" />
         </div>
       </div>
     </section>

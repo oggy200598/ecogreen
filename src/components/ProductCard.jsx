@@ -2,7 +2,7 @@ export default function ProductCard({ title, description, price, image }) {
   return (
     <div className="group rounded-xl border border-gray-200 bg-white shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition p-0 overflow-hidden">
       {image && (
-        <div className="aspect-[4/3] w-full overflow-hidden">
+        <div className="aspect-4/3 w-full overflow-hidden">
           <img
             src={image}
             alt={title}

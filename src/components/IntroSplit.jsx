@@ -30,7 +30,7 @@ export default function IntroSplit(){
             <div className="mt-5 flex items-center gap-4">
               <a href="/gioi-thieu"
                  className="px-5 py-2.5 rounded-md font-semibold text-white
-                            bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 transition">
+                            bg-linear-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 transition">
                 Đọc thêm
               </a>
               <a href="/lien-he"

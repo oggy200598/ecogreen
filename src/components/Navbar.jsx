@@ -11,7 +11,7 @@ export default function Navbar() {
     "block py-2 px-4 text-white hover:text-yellow-200 transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-yellow-300 hover:after:w-full after:transition-all after:duration-300"
 
   return (
-    <nav className="bg-gradient-to-r from-emerald-600 to-green-600 fixed top-0 left-0 w-full z-50 shadow-md">
+    <nav className="bg-linear-to-r from-emerald-600 to-green-600 fixed top-0 left-0 w-full z-50 shadow-md">
       <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <NavLink
