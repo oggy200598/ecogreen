@@ -16,14 +16,12 @@ import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import SEO from "./components/SEO";
 import Sustainability from "./pages/Sustainability";
-
 export default function App() {
   return (
     <Router>
       <ScrollToTop />
       <SEO />
       <Navbar />
-
       <Routes>
         <Route path="/sustainability" element={<Sustainability />} />
         <Route path="/" element={<Home />} />
@@ -39,7 +37,6 @@ export default function App() {
         <Route path="/lien-he" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-
       <Footer />
     </Router>
   );
