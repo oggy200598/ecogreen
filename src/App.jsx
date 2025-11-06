@@ -15,7 +15,7 @@ import NewsDetail from "./pages/NewsDetail";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import SEO from "./components/SEO";
-import Sustainability from "./pages/Sustainability";
+import Sustainability from "./components/Sustainability";
 export default function App() {
   return (
     <Router>
