@@ -21,7 +21,7 @@ export default function About() {
         viewport={{ once: true, amount: 0.2 }}
         className="text-center max-w-3xl mx-auto"
       >
-        <h1 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-green-600 to-emerald-400 bg-clip-text text-transparent mb-6">
+        <h1 className="text-4xl md:text-5xl font-extrabold bg-linear-to-r from-green-600 to-emerald-400 bg-clip-text text-transparent mb-6">
           Về EcoGreen 🌱
         </h1>
         <p className="text-gray-700 text-lg leading-relaxed">
@@ -137,7 +137,7 @@ export default function About() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="text-center py-14 rounded-xl bg-gradient-to-r from-emerald-500 to-green-600 text-white shadow-lg max-w-5xl mx-auto"
+        className="text-center py-14 rounded-xl bg-linear-to-r from-emerald-500 to-green-600 text-white shadow-lg max-w-5xl mx-auto"
       >
         <h2 className="text-3xl font-bold mb-4">Hãy cùng EcoGreen kiến tạo tương lai xanh 🌳</h2>
         <p className="mb-6 max-w-2xl mx-auto text-white/90">

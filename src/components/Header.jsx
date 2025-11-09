@@ -29,16 +29,16 @@ export default function Header() {
   return (
     <header
       className={
-        "sticky top-0 z-[300] transition-all " +
+        "sticky top-0 z-300 transition-all " +
         (scrolled ? "shadow-lg shadow-black/10" : "")
       }
     >
       <div
         className="
           text-white relative
-          bg-gradient-to-r from-emerald-600 to-green-600
-          supports-[backdrop-filter]:backdrop-blur
-          supports-[backdrop-filter]:from-emerald-600/85 supports-[backdrop-filter]:to-green-600/85
+          bg-linear-to-r from-emerald-600 to-green-600
+          supports-backdrop-filter:backdrop-blur
+          supports-backdrop-filter:from-emerald-600/85 supports-backdrop-filter:to-green-600/85
         "
       >
         <div className="container mx-auto flex items-center justify-between px-4 h-16 lg:h-20">
@@ -65,7 +65,7 @@ export default function Header() {
       {/* Overlay */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-[280] bg-black/40 lg:hidden"
+          className="fixed inset-0 z-280 bg-black/40 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
@@ -74,7 +74,7 @@ export default function Header() {
       <div
         id="mobile-menu"
         className={
-          "lg:hidden fixed inset-x-0 top-16 z-[320] " + // ❗ không còn bottom-0
+          "lg:hidden fixed inset-x-0 top-16 z-320 " + // ❗ không còn bottom-0
           (isOpen ? "block" : "hidden")
         }
         role="dialog"

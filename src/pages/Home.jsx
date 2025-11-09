@@ -1,5 +1,5 @@
 // src/pages/Home.jsx
-import SEO from "@/components/SEO";             // 👈 thêm
+import SEO from "@/components/SEO";         
 import Hero from "../components/Hero";
 import IntroSplit from "../components/IntroSplit";
 import ServicesStrip from "../components/ServicesStrip";
@@ -23,8 +23,8 @@ export default function Home() {
           "@context":"https://schema.org",
           "@type":"Organization",
           "name":"EcoGreen Packaging",
-          "url":"https://ecogreen.vn",
-          "logo":"https://ecogreen.vn/logo.png",
+          "url":"https://ecogreenpackaging.vercel.app/",
+          "logo":"https://ecogreenpackaging.vercel.app/logo.png",
           "contactPoint":[{"@type":"ContactPoint","telephone":"+84-938466982","contactType":"customer service","areaServed":"VN","availableLanguage":"Vietnamese"}],
           "address":{"@type":"PostalAddress","streetAddress":"143/2 Nguyễn Trãi, P2, Q5","addressLocality":"Hồ Chí Minh","addressCountry":"VN"}
         }}
@@ -33,14 +33,11 @@ export default function Home() {
       {/* Nền trang (nên dùng .webp) */}
       <div className="absolute inset-0 bg-[url('/bg.webp')] bg-cover bg-center" />
       <div className="absolute inset-0 bg-white/95" />
-
       <div className="relative z-10">
-        <Hero />                 {/* đảm bảo trong Hero có 1 <h1> duy nhất */}
+        <Hero />                 
         <ServicesStrip />
         <IntroSplit />
         <PartnersMarquee />
-
-      
         <SubHero />
         <section className="py-12 px-6">
           <div className="mx-auto max-w-6xl rounded-2xl border border-emerald-100 bg-white/90 backdrop-blur p-6 shadow-lg">

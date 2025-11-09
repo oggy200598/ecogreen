@@ -57,7 +57,7 @@ export default function TuyenDung() {
       </section>
 
       {/* CTA */}
-      <section className="text-center py-10 bg-gradient-to-r from-emerald-500 to-green-600 rounded-xl text-white shadow-lg">
+      <section className="text-center py-10 bg-linear-to-r from-emerald-500 to-green-600 rounded-xl text-white shadow-lg">
         <h2 className="text-2xl font-bold mb-3">
           Không tìm thấy vị trí phù hợp?
         </h2>

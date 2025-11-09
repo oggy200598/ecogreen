@@ -66,7 +66,7 @@ export default function CategoryCarousel() {
                 to={c.to}
                 className="group overflow-hidden rounded-lg bg-white shadow hover:shadow-lg transition flex flex-col"
               >
-                <div className="aspect-[4/3] bg-gray-100 overflow-hidden">
+                <div className="aspect-4/3 bg-gray-100 overflow-hidden">
                   <img
                     src={c.img}
                     alt={c.title}

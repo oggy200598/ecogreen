@@ -1,9 +1,0 @@
-User-agent: *
-Allow: /
-
-# Cấm bot index trang test hoặc API
-Disallow: /api/
-Disallow: /test/
-
-# Khai báo sitemap
-Sitemap: https://ecogreenpackaging.vercel.app/sitemap.xml

@@ -7,7 +7,7 @@ export default function SEO({
   type = 'website',
   jsonLd
 }) {
-  const site = 'https://ecogreen.vn' // đổi sang domain của bạn
+  const site = 'https://ecogreenpackaging.vercel.app' 
   const canon = canonical?.startsWith('http') ? canonical : site + (canonical || '/')
   const img = image?.startsWith('http') ? image : site + image
 
