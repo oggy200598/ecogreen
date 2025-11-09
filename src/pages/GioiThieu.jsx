@@ -144,7 +144,7 @@ export default function About() {
           Liên hệ với chúng tôi để bắt đầu hành trình bao bì bền vững cho doanh nghiệp của bạn.
         </p>
         <a
-          href="/contact"
+          href="/lien-he"
           className="inline-block px-8 py-3 bg-white text-green-700 font-semibold rounded-lg shadow hover:bg-gray-100 transition"
         >
           Liên hệ ngay

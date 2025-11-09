@@ -1,31 +1,30 @@
-// src/pages/TuVanThietKe.jsx
 import { motion } from "framer-motion";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
-  show:  { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 const fade = {
   hidden: { opacity: 0 },
-  show:  { opacity: 1, transition: { duration: 0.5 } },
+  show: { opacity: 1, transition: { duration: 0.5 } },
 };
 
 export default function TuVanThietKe() {
   return (
-    <div className="p-6 space-y-12">
+    <main className="pt-24 p-6 space-y-16 bg-gray-50">
       {/* Hero */}
       <motion.section
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="text-center py-12 bg-emerald-50 rounded-xl shadow"
+        className="text-center py-12 bg-emerald-50 rounded-xl shadow-lg"
       >
         <motion.img
           variants={fade}
           src="/TuVanThietKe/design.jpg"
           alt="Thiết kế bao bì EcoGreen"
-          className="w-full max-h-72 object-cover rounded-lg mb-6"
+          className="w-full max-h-80 object-cover rounded-xl mb-6 shadow"
           loading="lazy"
         />
         <h1 className="text-3xl md:text-4xl font-bold text-emerald-700">
@@ -44,11 +43,11 @@ export default function TuVanThietKe() {
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <h2 className="text-2xl font-semibold text-emerald-600 text-center mb-8">
+        <h2 className="text-2xl font-semibold text-emerald-700 text-center mb-10">
           Quy trình làm việc
         </h2>
 
-        <div className="grid md:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {[
             {
               img: "/TuVanThietKe/idea.jpg",
@@ -74,16 +73,24 @@ export default function TuVanThietKe() {
             <motion.div
               key={i}
               variants={fadeUp}
-              className="p-4 bg-white shadow rounded-lg text-center"
+              whileHover={{ scale: 1.03 }}
+              className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-xl transition"
             >
-              <img
-                src={step.img}
-                alt={step.title}
-                className="h-24 mx-auto mb-3 object-cover"
-                loading="lazy"
-              />
-              <h3 className="font-bold text-emerald-700">{step.title}</h3>
-              <p className="text-gray-600 mt-2">{step.desc}</p>
+              {/* Hình tràn viền */}
+              <div className="h-100 w-full overflow-hidden">
+                <img
+                  src={step.img}
+                  alt={step.title}
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Nội dung */}
+              <div className="p-5 text-center">
+                <h3 className="font-semibold text-emerald-700">{step.title}</h3>
+                <p className="text-gray-600 mt-2 text-sm">{step.desc}</p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -95,14 +102,14 @@ export default function TuVanThietKe() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="bg-emerald-50 py-10 px-6 rounded-xl shadow"
+        className="bg-emerald-50 py-12 px-6 rounded-xl shadow-lg"
       >
-        <h2 className="text-2xl font-semibold text-emerald-600 text-center mb-6">
+        <h2 className="text-2xl font-semibold text-emerald-700 text-center mb-8">
           Vì sao chọn EcoGreen?
         </h2>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto items-center">
-          <ul className="space-y-4 text-gray-700 list-disc list-inside">
+        <div className="grid md:grid-cols-2 gap-10 max-w-5xl mx-auto items-center">
+          <ul className="space-y-4 text-gray-700 list-disc list-inside leading-relaxed">
             <li>Thiết kế miễn phí cho khách hàng thân thiết.</li>
             <li>Đội ngũ chuyên nghiệp, sáng tạo và nhiều kinh nghiệm.</li>
             <li>Chất liệu giấy tái chế, thân thiện môi trường.</li>
@@ -113,7 +120,7 @@ export default function TuVanThietKe() {
             variants={fade}
             src="/TuVanThietKe/eco-packaging.jpg"
             alt="Bao bì EcoGreen"
-            className="rounded-lg shadow-lg"
+            className="rounded-xl shadow-xl hover:scale-[1.02] transition-transform duration-500"
             loading="lazy"
           />
         </div>
@@ -125,7 +132,7 @@ export default function TuVanThietKe() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="text-center py-12"
+        className="text-center py-16"
       >
         <h2 className="text-2xl font-semibold text-emerald-700">
           Sẵn sàng để bắt đầu dự án cùng EcoGreen?
@@ -135,11 +142,11 @@ export default function TuVanThietKe() {
         </p>
         <a
           href="/contact"
-          className="inline-block mt-6 px-6 py-3 bg-emerald-600 text-white rounded-lg shadow hover:bg-emerald-700"
+          className="inline-block mt-6 px-8 py-3 bg-emerald-600 text-white rounded-lg shadow hover:bg-emerald-700 transition"
         >
           Liên hệ ngay
         </a>
       </motion.section>
-    </div>
+    </main>
   );
 }

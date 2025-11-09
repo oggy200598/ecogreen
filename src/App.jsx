@@ -33,7 +33,7 @@ export default function App() {
         <Route path="/thu-vien/video" element={<Video />} />
         <Route path="/tuyen-dung" element={<TuyenDung />} />
         <Route path="/tin-tuc" element={<NewsList />} />
-        <Route path="/tin-tuc/:id" element={<NewsDetail />} />
+        <Route path="/tin-tuc/:slug" element={<NewsDetail />} />
         <Route path="/lien-he" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
