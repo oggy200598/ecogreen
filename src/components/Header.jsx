@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
@@ -36,7 +35,7 @@ export default function Header() {
       <div
         className="
           text-white relative
-          bg-linear-to-r from-emerald-600 to-green-600
+          bg-gradient-to-r from-emerald-600 to-green-600
           supports-backdrop-filter:backdrop-blur
           supports-backdrop-filter:from-emerald-600/85 supports-backdrop-filter:to-green-600/85
         "
@@ -62,7 +61,6 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Overlay */}
       {isOpen && (
         <div
           className="fixed inset-0 z-280 bg-black/40 lg:hidden"
@@ -70,11 +68,10 @@ export default function Header() {
         />
       )}
 
-      {/* Menu mobile: cao theo nội dung, giới hạn đến gần đáy */}
       <div
         id="mobile-menu"
         className={
-          "lg:hidden fixed inset-x-0 top-16 z-320 " + // ❗ không còn bottom-0
+          "lg:hidden fixed inset-x-0 top-16 z-320 " +
           (isOpen ? "block" : "hidden")
         }
         role="dialog"
@@ -84,7 +81,7 @@ export default function Header() {
           className="
             max-h-[calc(100vh-4rem)] overflow-y-auto
             bg-emerald-700 text-white shadow-2xl rounded-b-xl
-            pb-[env(safe-area-inset-bottom)]   /* hỗ trợ máy có tai thỏ */
+            pb-[env(safe-area-inset-bottom)]
           "
         >
           <Navbar isMobile={true} closeMenu={() => setIsOpen(false)} />

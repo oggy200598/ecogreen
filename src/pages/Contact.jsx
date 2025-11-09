@@ -1,9 +1,9 @@
-// src/pages/Contact.jsx
 import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Contact() {
   return (
-    <div className="px-6 py-12 bg-gray-50">
+    <main className="pt-24 px-6 py-12 bg-gray-50"> 
+      {/* pt-24 = chừa khoảng trống 6rem để header không đè lên */}
       <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
         {/* Form bên trái */}
         <div className="bg-white rounded-xl shadow-lg p-8">
@@ -14,7 +14,9 @@ export default function Contact() {
             {/* Họ tên + Email */}
             <div className="grid md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium mb-2">Họ và tên</label>
+                <label className="block text-sm font-medium mb-2">
+                  Họ và tên
+                </label>
                 <input
                   type="text"
                   className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-green-500"
@@ -22,7 +24,9 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium mb-2">Email</label>
+                <label className="block text-sm font-medium mb-2">
+                  Email
+                </label>
                 <input
                   type="email"
                   className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-green-500"
@@ -33,7 +37,9 @@ export default function Contact() {
 
             {/* Số điện thoại */}
             <div>
-              <label className="block text-sm font-medium mb-2">Số điện thoại</label>
+              <label className="block text-sm font-medium mb-2">
+                Số điện thoại
+              </label>
               <input
                 type="tel"
                 className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-green-500"
@@ -43,7 +49,9 @@ export default function Contact() {
 
             {/* Nội dung */}
             <div>
-              <label className="block text-sm font-medium mb-2">Nội dung</label>
+              <label className="block text-sm font-medium mb-2">
+                Nội dung
+              </label>
               <textarea
                 rows="5"
                 className="w-full border rounded-lg px-4 py-2 outline-none focus:ring-2 focus:ring-green-500"
@@ -65,7 +73,9 @@ export default function Contact() {
 
         {/* Thông tin + Bản đồ bên phải */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-green-700">Thông tin liên hệ</h2>
+          <h2 className="text-2xl font-bold text-green-700">
+            Thông tin liên hệ
+          </h2>
           <p className="text-gray-600">
             Hãy kết nối với EcoGreen để được hỗ trợ nhanh chóng và tận tâm.
           </p>
@@ -103,6 +113,6 @@ export default function Contact() {
           </div>
         </div>
       </div>
-    </div>
+    </main>
   );
 }
