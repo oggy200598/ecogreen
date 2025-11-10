@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import GioiThieu from "./pages/GioiThieu";
 import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail";
 import TuVanThietKe from "./pages/TuVanThietKe";
 import ThuVien from "./pages/ThuVien";
 import HinhAnh from "./pages/thu-vien/HinhAnh";
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/gioi-thieu" element={<GioiThieu />} />
         <Route path="/san-pham" element={<Products />} />
+        <Route path="/san-pham/:slug" element={<ProductDetail />} />
         <Route path="/tu-van-thiet-ke" element={<TuVanThietKe />} />
         <Route path="/thu-vien" element={<ThuVien />} />
         <Route path="/thu-vien/hinh-anh" element={<HinhAnh />} />

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function NotFound() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-emerald-50 to-white px-6">
+    <section className="min-h-screen flex flex-col items-center justify-center bg-linear-to-b from-emerald-50 to-white px-6">
       <div className="text-center max-w-lg">
         {/* Số 404 nổi bật */}
         <h1 className="text-7xl md:text-8xl font-extrabold text-emerald-600 drop-shadow-sm">

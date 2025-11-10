@@ -24,7 +24,7 @@ export default function TuVanThietKe() {
           variants={fade}
           src="/TuVanThietKe/design.jpg"
           alt="Thiết kế bao bì EcoGreen"
-          className="w-full max-h-80 object-cover rounded-xl mb-6 shadow"
+          className="w-full max-h-200 object-cover rounded-xl mb-6 shadow" 
           loading="lazy"
         />
         <h1 className="text-3xl md:text-4xl font-bold text-emerald-700">
@@ -141,7 +141,7 @@ export default function TuVanThietKe() {
           Liên hệ ngay để được tư vấn và nhận mẫu thiết kế demo miễn phí.
         </p>
         <a
-          href="/contact"
+          href="/lien-he"
           className="inline-block mt-6 px-8 py-3 bg-emerald-600 text-white rounded-lg shadow hover:bg-emerald-700 transition"
         >
           Liên hệ ngay

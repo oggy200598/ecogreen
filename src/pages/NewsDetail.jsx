@@ -28,14 +28,14 @@ export default function NewsDetail() {
             className="w-full h-[260px] md:h-[380px] object-cover transition-transform duration-700 group-hover:scale-105"
           />
         ) : (
-          <div className="h-[260px] md:h-[380px] w-full bg-gradient-to-r from-emerald-600 to-green-500" />
+          <div className="h-[260px] md:h-[380px] w-full bg-linear-to-r from-emerald-600 to-green-500" />
         )}
 
         {/* Overlay phủ full */}
         <div className="absolute inset-0 bg-black/35 group-hover:bg-black/45 transition-colors duration-500" />
 
         {/* Breadcrumb + Tiêu đề */}
-        <div className="absolute bottom-[40px] left-0 right-0 text-white px-6 py-8">
+        <div className="absolute bottom-10 left-0 right-0 text-white px-6 py-8">
           <div className="max-w-5xl mx-auto">
             <nav className="text-sm text-white/80 mb-2">
               <Link to="/" className="hover:underline">

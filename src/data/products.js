@@ -1,7 +1,88 @@
-// src/data/products.js
 const products = [
-  { title: "Ly giấy Eco", description: "Phân hủy sinh học.", price: "50.000đ / 100 cái" },
-  { title: "Túi giấy Kraft", description: "Tái chế, bền đẹp.", price: "30.000đ / 50 cái" },
-  { title: "Hộp giấy đựng thức ăn", description: "Tiện lợi, sạch sẽ.", price: "70.000đ / 100 cái" }
+  {
+    title: "Ly giấy Eco",
+    description: "Phân hủy sinh học, phù hợp cho cà phê mang đi và sinh tố.",
+    price: "50.000đ / 100 cái",
+    image: "/products/lygiay.png",
+    category: "Ly giấy",
+  },
+  {
+    title: "Ly giấy trắng cao cấp",
+    description: "Bề mặt trơn mịn, dễ in logo thương hiệu.",
+    price: "55.000đ / 100 cái",
+    image: "/products/lygiay.png",
+    category: "Ly giấy",
+  },
+  {
+    title: "Túi giấy Kraft",
+    description: "Chất liệu tái chế, bền đẹp, thích hợp cho cửa hàng quà tặng.",
+    price: "30.000đ / 50 cái",
+    image: "/products/tuigiay.png",
+    category: "Túi giấy",
+  },
+  {
+    title: "Túi giấy nhỏ",
+    description: "Dùng đựng bánh kẹo, mỹ phẩm, sản phẩm handmade.",
+    price: "20.000đ / 50 cái",
+    image: "/products/tuigiay.png",
+    category: "Túi giấy",
+  },
+  {
+    title: "Hộp giấy đựng thức ăn",
+    description: "Tiện lợi, sạch sẽ, giữ nhiệt tốt – phù hợp take away.",
+    price: "70.000đ / 100 cái",
+    image: "/products/hopgiay.png",
+    category: "Bao bì giấy",
+  },
+  {
+    title: "Hộp kraft nâu",
+    description: "Hộp giấy màu nâu tự nhiên, an toàn cho thực phẩm.",
+    price: "65.000đ / 100 cái",
+    image: "/products/giaykraft.png",
+    category: "Bao bì giấy",
+  },
+  {
+    title: "Giấy gói hàng Eco",
+    description: "Giấy kraft cuộn, dễ gói, bảo vệ sản phẩm khi vận chuyển.",
+    price: "25.000đ / cuộn",
+    image: "/products/giaygoihang.png",
+    category: "Giấy gói",
+  },
+  {
+    title: "Giấy note tái chế",
+    description: "Dòng giấy ghi chú thân thiện môi trường, màu kraft nhẹ.",
+    price: "18.000đ / tập",
+    image: "/products/giaynote.png",
+    category: "Giấy văn phòng",
+  },
+  {
+    title: "Giấy in FAX",
+    description: "Chất lượng cao, bề mặt mịn, dùng cho máy fax và in nhiệt.",
+    price: "22.000đ / cuộn",
+    image: "/products/GIAYFAX.png",
+    category: "Giấy văn phòng",
+  },
+  {
+    title: "Khay thức ăn giấy",
+    description: "Khay giấy định hình, chống thấm dầu, phù hợp đồ ăn nhanh.",
+    price: "45.000đ / 100 cái",
+    image: "/products/khaythucangiay.png",
+    category: "Bao bì giấy",
+  },
+  {
+    title: "Thư giấy Kraft",
+    description: "Thư giấy cổ điển, phù hợp trang trí và viết tay sáng tạo.",
+    price: "15.000đ / 10 tờ",
+    image: "/products/thugiay.png",
+    category: "Giấy trang trí",
+  },
+  {
+    title: "Dụng cụ thùng giấy Eco",
+    description: "Dụng cụ văn phòng từ giấy ép cứng, tái chế, bền chắc.",
+    price: "80.000đ / bộ",
+    image: "/products/dungcuthucangiay.png",
+    category: "Sản phẩm tái chế",
+  },
 ];
+
 export default products;
