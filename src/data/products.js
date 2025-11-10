@@ -5,13 +5,7 @@ const products = [
     price: "50.000đ / 100 cái",
     image: "/products/lygiay.png",
     category: "Ly giấy",
-  },
-  {
-    title: "Ly giấy trắng cao cấp",
-    description: "Bề mặt trơn mịn, dễ in logo thương hiệu.",
-    price: "55.000đ / 100 cái",
-    image: "/products/lygiay.png",
-    category: "Ly giấy",
+    slug: "ly-giay-eco",
   },
   {
     title: "Túi giấy Kraft",
@@ -19,13 +13,7 @@ const products = [
     price: "30.000đ / 50 cái",
     image: "/products/tuigiay.png",
     category: "Túi giấy",
-  },
-  {
-    title: "Túi giấy nhỏ",
-    description: "Dùng đựng bánh kẹo, mỹ phẩm, sản phẩm handmade.",
-    price: "20.000đ / 50 cái",
-    image: "/products/tuigiay.png",
-    category: "Túi giấy",
+    slug: "tui-giay-kraft",
   },
   {
     title: "Hộp giấy đựng thức ăn",
@@ -33,6 +21,7 @@ const products = [
     price: "70.000đ / 100 cái",
     image: "/products/hopgiay.png",
     category: "Bao bì giấy",
+    slug: "hop-giay-dung-thuc-an",
   },
   {
     title: "Hộp kraft nâu",
@@ -40,6 +29,7 @@ const products = [
     price: "65.000đ / 100 cái",
     image: "/products/giaykraft.png",
     category: "Bao bì giấy",
+    slug: "hop-kraft-nau",
   },
   {
     title: "Giấy gói hàng Eco",
@@ -47,6 +37,7 @@ const products = [
     price: "25.000đ / cuộn",
     image: "/products/giaygoihang.png",
     category: "Giấy gói",
+    slug: "giay-goi-hang-eco",
   },
   {
     title: "Giấy note tái chế",
@@ -54,6 +45,7 @@ const products = [
     price: "18.000đ / tập",
     image: "/products/giaynote.png",
     category: "Giấy văn phòng",
+    slug: "giay-note-tai-che",
   },
   {
     title: "Giấy in FAX",
@@ -61,6 +53,7 @@ const products = [
     price: "22.000đ / cuộn",
     image: "/products/GIAYFAX.png",
     category: "Giấy văn phòng",
+    slug: "giay-in-fax",
   },
   {
     title: "Khay thức ăn giấy",
@@ -68,6 +61,7 @@ const products = [
     price: "45.000đ / 100 cái",
     image: "/products/khaythucangiay.png",
     category: "Bao bì giấy",
+    slug: "khay-thuc-an-giay",
   },
   {
     title: "Thư giấy Kraft",
@@ -75,6 +69,7 @@ const products = [
     price: "15.000đ / 10 tờ",
     image: "/products/thugiay.png",
     category: "Giấy trang trí",
+    slug: "thu-giay-kraft",
   },
   {
     title: "Dụng cụ thùng giấy Eco",
@@ -82,6 +77,7 @@ const products = [
     price: "80.000đ / bộ",
     image: "/products/dungcuthucangiay.png",
     category: "Sản phẩm tái chế",
+    slug: "dung-cu-thung-giay-eco",
   },
 ];
 

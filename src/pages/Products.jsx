@@ -106,12 +106,13 @@ export default function Products() {
           {filtered.length > 0 ? (
             filtered.map((p, i) => (
               <Link
-                key={i}
-                to={`/san-pham/${i}`}
-                className="transform hover:scale-[1.02] transition-transform duration-300"
-              >
-                <ProductCard {...p} />
-              </Link>
+  key={p.slug}
+  to={`/san-pham/${p.slug}`}
+  className="transform hover:scale-[1.02] transition-transform duration-300"
+>
+  <ProductCard {...p} />
+</Link>
+
             ))
           ) : (
             <p className="text-center text-gray-500 col-span-full">

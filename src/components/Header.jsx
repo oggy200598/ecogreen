@@ -35,7 +35,7 @@ export default function Header() {
       <div
         className="
           text-white relative
-          bg-gradient-to-r from-emerald-600 to-green-600
+          bg-linear-to-r from-emerald-600 to-green-600
           supports-backdrop-filter:backdrop-blur
           supports-backdrop-filter:from-emerald-600/85 supports-backdrop-filter:to-green-600/85
         "

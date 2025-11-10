@@ -4,7 +4,7 @@ import { useState } from "react";
 
 export default function ProductDetail() {
   const { slug } = useParams();
-  const product = products[slug];
+  const product = products.find((p) => p.slug === slug); // ✅ tìm theo slug
   const [quantity, setQuantity] = useState(100);
   const [message, setMessage] = useState("");
   const [form, setForm] = useState({ name: "", phone: "", address: "", note: "" });
@@ -20,7 +20,7 @@ export default function ProductDetail() {
     );
 
   const related = products
-    .filter((p) => p.category === product.category && p.title !== product.title)
+    .filter((p) => p.category === product.category && p.slug !== product.slug)
     .slice(0, 3);
 
   const handleChange = (e) => {
@@ -163,10 +163,10 @@ export default function ProductDetail() {
             Sản phẩm cùng loại 🌿
           </h2>
           <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {related.map((r, i) => (
+            {related.map((r) => (
               <Link
-                key={i}
-                to={`/san-pham/${products.indexOf(r)}`}
+                key={r.slug}
+                to={`/san-pham/${r.slug}`} // ✅ dùng slug thay vì index
                 className="block bg-white p-4 rounded-xl shadow hover:shadow-lg transition"
               >
                 <img
