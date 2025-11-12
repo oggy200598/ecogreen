@@ -71,7 +71,7 @@ export default function TuyenDung() {
   return (
     <main className="bg-gray-50">
       {/* ✅ Banner đầu trang */}
-      <section className="relative w-full h-[45vh] bg-gradient-to-r from-emerald-600 to-green-500 flex items-center justify-center">
+      <section className="relative w-full h-[45vh] bg-linear-to-r from-emerald-600 to-green-500 flex items-center justify-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -217,4 +217,3 @@ export default function TuyenDung() {
     </main>
   );
 }
-  
