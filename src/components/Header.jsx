@@ -1,22 +1,27 @@
 import { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  // 🌀 Hiệu ứng cuộn đổi nền + đổ bóng
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // 🚫 Khóa cuộn khi mở menu mobile
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "";
     return () => (document.body.style.overflow = "");
   }, [isOpen]);
 
+  // 🔄 Tự đóng menu khi đổi sang màn hình lớn
   useEffect(() => {
     const onResize = () => {
       if (window.innerWidth >= 1024) setIsOpen(false);
@@ -27,66 +32,64 @@ export default function Header() {
 
   return (
     <header
-      className={
-        "sticky top-0 z-300 transition-all " +
-        (scrolled ? "shadow-lg shadow-black/10" : "")
-      }
+      className={`sticky top-0 z-[300] transition-all duration-300 ${
+        scrolled
+          ? "backdrop-blur-md bg-white/70 shadow-md"
+          : "bg-gradient-to-r from-emerald-600 to-green-600 text-white"
+      }`}
     >
-      <div
-        className="
-          text-white relative
-          bg-linear-to-r from-emerald-600 to-green-600
-          supports-backdrop-filter:backdrop-blur
-          supports-backdrop-filter:from-emerald-600/85 supports-backdrop-filter:to-green-600/85
-        "
-      >
-        <div className="container mx-auto flex items-center justify-between px-4 h-16 lg:h-20">
-          <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="EcoGreen" className="h-9 lg:h-12 w-auto" />
-          </Link>
+      <div className="container mx-auto flex items-center justify-between px-4 h-16 lg:h-20 transition-all">
+        {/* ✅ Logo */}
+        <Link to="/" className="flex items-center gap-2">
+          <img
+            src="/logo.png"
+          
+            className="h-9 lg:h-12 w-auto transition-transform hover:scale-105"
+          />
+        </Link>
 
-          <nav className="hidden lg:block">
-            <Navbar isMobile={false} closeMenu={() => setIsOpen(false)} />
-          </nav>
+        {/* ✅ Navbar desktop */}
+        <nav className="hidden lg:block">
+          <Navbar isMobile={false} closeMenu={() => setIsOpen(false)} />
+        </nav>
 
-          <button
-            className="lg:hidden inline-grid place-items-center h-11 w-11 rounded-md text-2xl hover:bg-white/10 transition"
-            onClick={() => setIsOpen(v => !v)}
-            aria-label="Mở/đóng menu"
-            aria-expanded={isOpen}
-            aria-controls="mobile-menu"
-          >
-            ☰
-          </button>
-        </div>
-      </div>
-
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-280 bg-black/40 lg:hidden"
-          onClick={() => setIsOpen(false)}
-        />
-      )}
-
-      <div
-        id="mobile-menu"
-        className={
-          "lg:hidden fixed inset-x-0 top-16 z-320 " +
-          (isOpen ? "block" : "hidden")
-        }
-        role="dialog"
-        aria-modal="true"
-      >
-        <div
-          className="
-            max-h-[calc(100vh-4rem)] overflow-y-auto
-            bg-emerald-700 text-white shadow-2xl rounded-b-xl
-            pb-[env(safe-area-inset-bottom)]
-          "
+        {/* ✅ Nút menu mobile */}
+        <button
+          className="lg:hidden inline-grid place-items-center h-11 w-11 rounded-md hover:bg-black/10 transition"
+          onClick={() => setIsOpen(v => !v)}
+          aria-label="Mở/đóng menu"
         >
-          <Navbar isMobile={true} closeMenu={() => setIsOpen(false)} />
-        </div>
+          {isOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
       </div>
+
+      {/* ✅ Overlay khi mở menu mobile */}
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              key="overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.4 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black z-[280] lg:hidden"
+              onClick={() => setIsOpen(false)}
+            />
+            <motion.div
+              key="mobile-menu"
+              initial={{ y: "-100%", opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: "-100%", opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed top-0 left-0 right-0 z-[320] lg:hidden bg-emerald-700 text-white shadow-2xl rounded-b-xl max-h-[90vh] overflow-y-auto"
+            >
+              <div className="p-4">
+                <Navbar isMobile={true} closeMenu={() => setIsOpen(false)} />
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

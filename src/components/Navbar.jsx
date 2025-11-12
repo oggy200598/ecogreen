@@ -11,18 +11,24 @@ export default function Navbar() {
     "block py-2 px-4 text-white hover:text-yellow-200 transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-[2px] after:bg-yellow-300 hover:after:w-full after:transition-all after:duration-300"
 
   return (
-    <nav className="bg-linear-to-r from-emerald-600 to-green-600 fixed top-0 left-0 w-full z-50 shadow-md">
-      <div className="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-        {/* Logo */}
+    <nav className="bg-gradient-to-r from-emerald-600 to-green-600 fixed top-0 left-0 w-full z-50 shadow-md">
+      <div className="w-full max-w-7xl mx-auto px-8 py-3 flex justify-between items-center">
+        
+        {/* Logo + tên thương hiệu */}
         <NavLink
           to="/"
-          className="text-2xl font-bold text-white hover:text-yellow-200 transition-colors"
+          className="flex items-center gap-3"
           onClick={closeMenu}
         >
-          EcoGreen
+          <img
+            src="/logo.png" // Đặt file logo trong thư mục public/
+            alt="EcoGreen logo"
+            className="w-11 h-11 object-contain"
+          />
+
         </NavLink>
 
-        {/* Nút toggle mobile */}
+        {/* Nút toggle menu (mobile) */}
         <button
           className="md:hidden text-white hover:text-yellow-200"
           onClick={toggleMenu}
@@ -30,7 +36,7 @@ export default function Navbar() {
           {isOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
 
-        {/* Menu */}
+        {/* Menu điều hướng */}
         <ul
           className={`absolute md:static top-full left-0 w-full md:w-auto bg-emerald-600 md:bg-transparent md:flex md:space-x-6 transition-all duration-300 ease-in-out ${
             isOpen

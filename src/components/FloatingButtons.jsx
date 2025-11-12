@@ -42,14 +42,14 @@ export default function FloatingButtons() {
       />
       {/* Zalo */}
       <Item
-        href="https://zalo.me/0938466982"
+        href="https://zalo.me/0564581196"
         label="Zalo chat"
         icon="/icons/zalo.svg"
         bg="bg-blue-600"
       />
       {/* Messenger */}
       <Item
-        href="https://m.me/yourpage"
+        href="https://www.messenger.com/t/100013292320211"
         label="Messenger"
         icon="/icons/messenger.svg"
         bg="bg-indigo-600"
