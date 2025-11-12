@@ -127,7 +127,7 @@ export default function Products() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="text-center py-16 rounded-2xl bg-linear-to-rrom-emerald-500 to-green-600 text-white shadow-xl max-w-5xl mx-auto"
+          className="text-center py-16 rounded-2xl bg-linear-to-r from-emerald-500 to-green-600 text-white shadow-xl max-w-5xl mx-auto"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Bạn cần giải pháp bao bì riêng cho thương hiệu?

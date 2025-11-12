@@ -38,38 +38,68 @@ export default function TuyenDung() {
   const [form, setForm] = useState({ name: "", email: "", position: "", file: null });
   const [message, setMessage] = useState("");
   const [showForm, setShowForm] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
 
+  const handleFile = (e) => {
+    const file = e.target.files[0];
+    if (file && !/\.(pdf|docx?)$/i.test(file.name)) {
+      alert("Vui lòng chọn file PDF hoặc DOC/DOCX!");
+      return;
+    }
+    setForm({ ...form, file });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    setMessage("🎉 CV của bạn đã được gửi thành công! Chúng tôi sẽ sớm liên hệ.");
-    setForm({ name: "", email: "", position: "", file: null });
+    setLoading(true);
     setTimeout(() => {
-      setMessage("");
-      setShowForm(false);
-    }, 2500);
+      setLoading(false);
+      setMessage("🎉 CV của bạn đã được gửi thành công! Chúng tôi sẽ sớm liên hệ.");
+      setForm({ name: "", email: "", position: "", file: null });
+      setTimeout(() => {
+        setMessage("");
+        setShowForm(false);
+      }, 2500);
+    }, 2000);
   };
 
   return (
     <main className="bg-gray-50">
-      {/* ✅ Hero Banner */}
-      <section className="relative w-full h-[40vh] md:h-[80vh] overflow-hidden">
-        <motion.img
-          src="/banner-career.jpg"
-          alt="EcoGreen Packaging"
-          className="absolute inset-0 w-full h-full object-cover object-center"
-          initial={{ scale: 1.05, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
-        />
+      {/* ✅ Banner đầu trang */}
+      <section className="relative w-full h-[45vh] bg-gradient-to-r from-emerald-600 to-green-500 flex items-center justify-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-white text-4xl md:text-5xl font-bold text-center"
+        >
+          Tuyển dụng tại EcoGreen
+        </motion.h1>
       </section>
 
+      {/* ✅ Giới thiệu */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.2 }}
+        className="text-center max-w-3xl mx-auto px-6 mt-16 mb-10"
+      >
+        <h2 className="text-3xl font-bold text-emerald-700 mb-4">
+          Gia nhập đội ngũ EcoGreen
+        </h2>
+        <p className="text-gray-600">
+          Chúng tôi tìm kiếm những người trẻ năng động, đam mê sáng tạo và mong muốn đóng góp cho một tương lai xanh hơn.  
+          Hãy cùng EcoGreen lan tỏa tinh thần “sống xanh – làm xanh” đến mọi nơi!
+        </p>
+      </motion.div>
+
       {/* ✅ Danh sách việc làm */}
-      <div className="px-6 py-20 space-y-16">
+      <div className="px-6 pb-20 space-y-16">
         <motion.section
           variants={fadeUp}
           initial="hidden"
@@ -86,9 +116,7 @@ export default function TuyenDung() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <Briefcase className="text-emerald-600" size={28} />
-                <h2 className="text-xl font-semibold text-emerald-700">
-                  {job.title}
-                </h2>
+                <h2 className="text-xl font-semibold text-emerald-700">{job.title}</h2>
               </div>
               <p className="text-gray-600 mb-4">{job.desc}</p>
               <ul className="space-y-2 text-gray-700 mb-6">
@@ -166,22 +194,21 @@ export default function TuyenDung() {
                     type="file"
                     accept=".pdf,.doc,.docx"
                     className="hidden"
-                    onChange={(e) => setForm({ ...form, file: e.target.files[0] })}
+                    onChange={handleFile}
                   />
                 </label>
 
                 <button
                   type="submit"
-                  className="w-full flex justify-center items-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition"
+                  disabled={loading}
+                  className="w-full flex justify-center items-center gap-2 px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition disabled:opacity-70"
                 >
-                  <Send size={18} /> Gửi CV ngay
+                  {loading ? "Đang gửi..." : <><Send size={18} /> Gửi CV ngay</>}
                 </button>
               </form>
 
               {message && (
-                <p className="mt-4 text-center text-green-600 font-medium">
-                  {message}
-                </p>
+                <p className="mt-4 text-center text-green-600 font-medium">{message}</p>
               )}
             </motion.div>
           </motion.div>
@@ -190,3 +217,4 @@ export default function TuyenDung() {
     </main>
   );
 }
+  
